@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Shop | Verdant Muse - Sustainable Activewear</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233A5E4C'/%3E%3Cpath fill='%23E3A018' d='M50 25 L58 40 L75 42 L63 54 L67 71 L50 62 L33 71 L37 54 L25 42 L42 40 Z'/%3E%3C/svg%3E">
+    <style>
+        /* Additional shop page specific styles */
+        .shop-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2a4a3a 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .shop-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .shop-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .shop-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Sidebar Filters */
+        .shop-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1.5rem;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .filter-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .filter-category {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+        }
+
+        .filter-category input {
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .filter-category label {
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .filter-category .count {
+            margin-left: auto;
+            color: var(--gray-mid);
+            font-size: 0.8rem;
+        }
+
+        .price-range {
+            padding: 0.5rem 0;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-inputs input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .price-slider {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn-filter {
+            flex: 1;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-filter:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
+        .btn-reset {
+            flex: 1;
+            background: var(--border-light);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.6rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-reset:hover {
+            background: #ccc;
+        }
+
+        /* Shop Main Content */
+        .shop-main {
+            background: transparent;
+        }
+
+        .shop-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .results-count {
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+        }
+
+        .sort-select {
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+            cursor: pointer;
+        }
+
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-tag {
+            background: var(--border-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray-mid);
+            font-size: 0.8rem;
+        }
+
+        .filter-tag button:hover {
+            color: #ff6b6b;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Product Card Enhancements */
+        .product-card {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding-bottom: 1.2rem;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent);
+            color: #2D2A24;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .product-img {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0.3rem;
+            font-family: 'Montserrat', sans-serif;
+            padding: 0 0.5rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray-mid);
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            font-weight: normal;
+        }
+
+        .discount-badge {
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-add-to-cart {
+            flex: 2;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .btn-add-to-cart:hover {
+            background: var(--accent);
+            color: #2D2A24;
+        }
+
+        .btn-buy-now {
+            flex: 1;
+            background: var(--accent);
+            color: #2D2A24;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .btn-buy-now:hover {
+            background: var(--accent-hover);
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 4rem;
+            background: white;
+            border-radius: 20px;
+            color: var(--gray-mid);
+        }
+
+        .no-products i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--border-light);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .page-btn:hover:not(.active) {
+            background: var(--border-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .shop-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-sidebar {
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .shop-header h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .btn-add-to-cart,
+            .btn-buy-now {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">VERDANT MUSE</a>
+                <span class="logo-tag">sustainable activewear</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li>
+                    <li><a href="/shopifyWebsite/about.html">About</a></li>
+                    <li><a href="/shopifyWebsite/sustainability.html">Sustainability</a></li>
+                    <li><a href="/shopifyWebsite/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="/shopifyWebsite/account.html" aria-label="Account"><i class="fas fa-user"></i></a>
+                <a href="/shopifyWebsite/cart.html" onclick="window.open('/shopifyWebsite/cart.html')" class="cart-icon"
+                    aria-label="Cart" id="cartIcon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= SHOP HEADER ================= -->
+    <section class="shop-header">
+        <div class="container">
+            <h1>Our Collection</h1>
+            <p>Sustainable activewear designed for movement, comfort, and the planet</p>
+        </div>
+    </section>
+
+    <!-- ================= SHOP MAIN CONTENT ================= -->
+    <div class="container">
+        <div class="shop-layout">
+            <!-- Sidebar Filters -->
+            <aside class="shop-sidebar">
+                <div class="filter-section">
+                    <h3><i class="fas fa-filter"></i> Categories</h3>
+                    <div class="filter-category" data-category="all">
+                        <input type="checkbox" id="cat-all" value="all" checked>
+                        <label for="cat-all">All Products</label>
+                        <span class="count" id="count-all">0</span>
+                    </div>
+                    <div class="filter-category" data-category="tops">
+                        <input type="checkbox" id="cat-tops" value="tops">
+                        <label for="cat-tops">Tops</label>
+                        <span class="count" id="count-tops">0</span>
+                    </div>
+                    <div class="filter-category" data-category="bottoms">
+                        <input type="checkbox" id="cat-bottoms" value="bottoms">
+                        <label for="cat-bottoms">Bottoms</label>
+                        <span class="count" id="count-bottoms">0</span>
+                    </div>
+                    <div class="filter-category" data-category="outerwear">
+                        <input type="checkbox" id="cat-outerwear" value="outerwear">
+                        <label for="cat-outerwear">Outerwear</label>
+                        <span class="count" id="count-outerwear">0</span>
+                    </div>
+                    <div class="filter-category" data-category="accessories">
+                        <input type="checkbox" id="cat-accessories" value="accessories">
+                        <label for="cat-accessories">Accessories</label>
+                        <span class="count" id="count-accessories">0</span>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3><i class="fas fa-tag"></i> Price Range</h3>
+                    <div class="price-range">
+                        <div class="price-inputs">
+                            <input type="number" id="min-price" placeholder="Min $" value="0">
+                            <input type="number" id="max-price" placeholder="Max $" value="200">
+                        </div>
+                        <input type="range" id="price-slider" min="0" max="200" value="200" class="price-slider">
+                        <div class="filter-buttons">
+                            <button class="btn-filter" id="applyPriceBtn">Apply</button>
+                            <button class="btn-reset" id="resetFiltersBtn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3><i class="fas fa-star"></i> Sustainability Badge</h3>
+                    <div class="filter-category" data-eco="eco">
+                        <input type="checkbox" id="eco-friendly" value="eco">
+                        <label for="eco-friendly">Eco-Certified</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="shop-main">
+                <div class="shop-toolbar">
+                    <div class="results-count" id="resultsCount">Showing 0 products</div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+
+                <div class="active-filters" id="activeFilters"></div>
+
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be injected here -->
+                </div>
+
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be injected here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ================= NEWSLETTER SECTION ================= -->
+    <section class="newsletter" style="margin-top: 4rem;">
+        <div class="container newsletter-container">
+            <h2>Join the Verdant Circle</h2>
+            <p>Sign up for 10% off your first order and exclusive eco-tips.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p id="newsletterMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>VERDANT MUSE</h3>
+                <p>Ethically crafted activewear for the conscious athlete. Designed in California, made with purpose.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">Women's</a></li>
+                    <li><a href="#">Men's</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Verdant Muse. All rights reserved. | Made with ♡ for the planet.</p>
+        </div>
+    </footer>
+
+    <!-- ================= CART SIDEBAR ================= -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-sidebar-items" id="cartItemsList">
+            <div class="empty-cart-message"><i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-sidebar-footer">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-checkout" id="checkoutBtn">Proceed to Checkout</button>
+            <button class="btn btn-secondary" id="continueShoppingBtn">Continue Shopping</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script>
+        const productsData = [
+            {
+                id: 1,
+                name: "Seamless Muse Leggings",
+                price: 78,
+                originalPrice: 98,
+                image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
+                badge: "Bestseller",
+                category: "bottoms",
+                ecoCertified: true
+            },
+            {
+                id: 2,
+                name: "Eco Crop Top",
+                price: 48,
+                originalPrice: 68,
+                image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&h=500&fit=crop",
+                badge: "New",
+                category: "tops",
+                ecoCertified: true
+            },
+            {
+                id: 3,
+                name: "Forest Run Jacket",
+                price: 98,
+                originalPrice: 128,
+                image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=500&fit=crop",
+                badge: "Limited",
+                category: "outerwear",
+                ecoCertified: true
+            },
+            {
+                id: 4,
+                name: "Zen Studio Bra",
+                price: 42,
+                originalPrice: 58,
+                image: "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=400&h=500&fit=crop",
+                badge: "Organic",
+                category: "tops",
+                ecoCertified: true
+            },
+            {
+                id: 5,
+                name: "Trail Shorts 2.0",
+                price: 52,
+                originalPrice: 72,
+                image: "https://images.unsplash.com/photo-1539541234525-d2e5b5cfa5e9?w=400&h=500&fit=crop",
+                badge: "Eco",
+                category: "bottoms",
+                ecoCertified: true
+            },
+            {
+                id: 6,
+                name: "Merino Wool Pullover",
+                price: 112,
+                originalPrice: 148,
+                image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=500&fit=crop",
+                badge: "Sustainable",
+                category: "outerwear",
+                ecoCertified: true
+            },
+            {
+                id: 7,
+                name: "Bamboo Performance Tee",
+                price: 45,
+                originalPrice: 62,
+                image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400&h=500&fit=crop",
+                badge: "New",
+                category: "tops",
+                ecoCertified: true
+            },
+            {
+                id: 8,
+                name: "Recycled Yoga Mat Bag",
+                price: 38,
+                originalPrice: 52,
+                image: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=400&h=500&fit=crop",
+                badge: "Accessory",
+                category: "accessories",
+                ecoCertified: true
+            },
+            {
+                id: 9,
+                name: "High-Waist Capri Leggings",
+                price: 68,
+                originalPrice: 88,
+                image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=500&fit=crop",
+                badge: "Bestseller",
+                category: "bottoms",
+                ecoCertified: true
+            },
+            {
+                id: 10,
+                name: "Sustainable Running Socks",
+                price: 18,
+                originalPrice: 28,
+                image: "https://images.unsplash.com/photo-1544441892-794166f1e3be?w=400&h=500&fit=crop",
+                badge: "Eco",
+                category: "accessories",
+                ecoCertified: true
+            }
+        ];
+
+        // ========== STATE ==========
+        let cart = [];
+        let currentFilters = {
+            categories: ['all'],
+            minPrice: 0,
+            maxPrice: 200,
+            ecoOnly: false
+        };
+        let currentSort = 'featured';
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        // ========== CART FUNCTIONS ==========
+        function loadCart() {
+            const savedCart = localStorage.getItem('verdantMuseCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+                updateCartSidebar();
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('verdantMuseCart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartSidebar();
+        }
+
+        function addToCart(productId, quantity = 1) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+
+            saveCart();
+            showToast(`${product.name} added to cart!`, 'success');
+
+            const cartIcon = document.querySelector('.cart-icon');
+            if (cartIcon) {
+                cartIcon.style.transform = 'scale(1.1)';
+                setTimeout(() => cartIcon.style.transform = 'scale(1)', 200);
+            }
+        }
+
+        function buyNow(productId) {
+            addToCart(productId, 1);
+            openCartSidebar();
+        }
+
+        function updateCartCount() {
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElements.forEach(el => el.textContent = totalItems);
+        }
+
+        function updateCartSidebar() {
+            const cartItemsContainer = document.getElementById('cartItemsList');
+            const cartTotalElement = document.getElementById('cartTotal');
+
+            if (!cartItemsContainer) return;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart-message"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p><p style="font-size: 0.8rem;">Add some sustainable gear!</p></div>';
+                if (cartTotalElement) cartTotalElement.textContent = '$0.00';
+                return;
+            }
+
+            let total = 0;
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+            <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                <div class="cart-item-quantity">
+                    <button class="decrease-qty" data-id="${item.id}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase-qty" data-id="${item.id}">+</button>
+                </div>
+            </div>
+            <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
+        `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            if (cartTotalElement) cartTotalElement.textContent = `$${total.toFixed(2)}`;
+
+            document.querySelectorAll('.decrease-qty').forEach(btn => {
+                btn.addEventListener('click', () => updateQuantity(parseInt(btn.dataset.id), -1));
+            });
+            document.querySelectorAll('.increase-qty').forEach(btn => {
+                btn.addEventListener('click', () => updateQuantity(parseInt(btn.dataset.id), 1));
+            });
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => removeFromCart(parseInt(btn.dataset.id)));
+            });
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                const newQuantity = item.quantity + change;
+                if (newQuantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    item.quantity = newQuantity;
+                    saveCart();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            showToast('Item removed from cart', 'info');
+        }
+
+        // ========== CART SIDEBAR ==========
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartIconBtn = document.getElementById('cartIcon');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const continueShoppingBtn = document.getElementById('continueShoppingBtn');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        function openCartSidebar() {
+            if (cartSidebar) cartSidebar.classList.add('open');
+            if (cartOverlay) cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartSidebar() {
+            if (cartSidebar) cartSidebar.classList.remove('open');
+            if (cartOverlay) cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (cartIconBtn) cartIconBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCartSidebar();
+        });
+        if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartSidebar);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
+        if (continueShoppingBtn) continueShoppingBtn.addEventListener('click', closeCartSidebar);
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    showToast('Your cart is empty! Add some items first.', 'error');
+                } else {
+                    showToast('Proceeding to checkout! Thank you for shopping sustainably.', 'success');
+                    closeCartSidebar();
+                }
+            });
+        }
+
+        // ========== FILTER FUNCTIONS ==========
+        function getFilteredProducts() {
+            let filtered = [...productsData];
+
+            // Category filter
+            if (!currentFilters.categories.includes('all')) {
+                filtered = filtered.filter(p => currentFilters.categories.includes(p.category));
+            }
+
+            // Price filter
+            filtered = filtered.filter(p => p.price >= currentFilters.minPrice && p.price <= currentFilters.maxPrice);
+
+            // Eco filter
+            if (currentFilters.ecoOnly) {
+                filtered = filtered.filter(p => p.ecoCertified);
+            }
+
+            return filtered;
+        }
+
+        function sortProducts(products) {
+            const sorted = [...products];
+            switch (currentSort) {
+                case 'price-low':
+                    return sorted.sort((a, b) => a.price - b.price);
+                case 'price-high':
+                    return sorted.sort((a, b) => b.price - a.price);
+                case 'name-asc':
+                    return sorted.sort((a, b) => a.name.localeCompare(b.name));
+                default:
+                    return sorted;
+            }
+        }
+
+        function updateCategoryCounts() {
+            const categories = ['all', 'tops', 'bottoms', 'outerwear', 'accessories'];
+            categories.forEach(cat => {
+                let count;
+                if (cat === 'all') {
+                    count = productsData.length;
+                } else {
+                    count = productsData.filter(p => p.category === cat).length;
+                }
+                const countElement = document.getElementById(`count-${cat}`);
+                if (countElement) countElement.textContent = count;
+            });
+        }
+
+        function renderProducts() {
+            let filtered = getFilteredProducts();
+            const sorted = sortProducts(filtered);
+
+            // Pagination
+            const totalPages = Math.ceil(sorted.length / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginatedProducts = sorted.slice(start, start + itemsPerPage);
+
+            // Update results count
+            const resultsCount = document.getElementById('resultsCount');
+            if (resultsCount) {
+                resultsCount.textContent = `Showing ${start + 1}-${Math.min(start + itemsPerPage, sorted.length)} of ${sorted.length} products`;
+            }
+
+            // Render products grid
+            const productsGrid = document.getElementById('productsGrid');
+            if (!productsGrid) return;
+
+            if (paginatedProducts.length === 0) {
+                productsGrid.innerHTML = `
+            <div class="no-products">
+                <i class="fas fa-search"></i>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters</p>
+            </div>
+        `;
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+
+            productsGrid.innerHTML = '';
+            paginatedProducts.forEach(product => {
+                const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+            <div class="product-badge">${product.badge}</div>
+            <div class="product-img" style="background-image: url('${product.image}'); background-size: cover; background-position: center;"></div>
+            <h3>${product.name}</h3>
+            <div class="price">
+                <span class="original-price">$${product.originalPrice}</span>
+                <span>$${product.price}</span>
+                <span class="discount-badge">-${discountPercent}%</span>
+            </div>
+            <div class="product-actions">
+                <button class="btn-add-to-cart" data-id="${product.id}"><i class="fas fa-shopping-bag"></i> Add to Cart</button>
+                <button class="btn-buy-now" data-id="${product.id}">Buy Now</button>
+            </div>
+        `;
+                productsGrid.appendChild(productCard);
+            });
+
+            // Add event listeners
+            document.querySelectorAll('.btn-add-to-cart').forEach(btn => {
+                btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));
+            })
+        }
+    </script>
+</body>
+
+</html>

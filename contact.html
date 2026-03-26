@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contact Us | Verdant Muse - Sustainable Activewear</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233A5E4C'/%3E%3Cpath fill='%23E3A018' d='M50 25 L58 40 L75 42 L63 54 L67 71 L50 62 L33 71 L37 54 L25 42 L42 40 Z'/%3E%3C/svg%3E">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, #1e3529 0%, #3A5E4C 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Layout */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-info h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-info>p {
+            color: var(--gray-mid);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .info-card:last-child {
+            border-bottom: none;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-icon i {
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        .info-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+
+        .info-content p {
+            color: var(--gray-mid);
+            line-height: 1.5;
+        }
+
+        .info-content a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-content a:hover {
+            color: var(--accent);
+        }
+
+        /* Business Hours */
+        .business-hours {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .business-hours h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            color: var(--gray-mid);
+            font-size: 0.9rem;
+        }
+
+        .hour-row .day {
+            font-weight: 500;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-subtitle {
+            color: var(--gray-mid);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group label .required {
+            color: #ff6b6b;
+            margin-left: 0.2rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(227, 160, 24, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: var(--text-dark);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #ffebee;
+            color: #c62828;
+            display: block;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: var(--primary-bg);
+            padding: 4rem 0;
+        }
+
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: var(--primary-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .faq-item p {
+            color: var(--gray-mid);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Social Connect Section */
+        .social-connect {
+            padding: 4rem 0;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+
+        .social-connect h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons-large {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons-large a {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons-large a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .social-icons-large a i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info,
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .social-icons-large {
+                gap: 1rem;
+            }
+
+            .social-icons-large a {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">VERDANT MUSE</a>
+                <span class="logo-tag">sustainable activewear</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="sustainability.html">Sustainability</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="/shopifyWebsite/account.html" aria-label="Account"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sustainability.html">Sustainability</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= CONTACT HERO ================= -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you. Whether you have a question about our products, sustainability practices, or
+                just want to say hello.</p>
+        </div>
+    </section>
+
+    <!-- ================= CONTENT SECTION ================= -->
+    <div class="container">
+        <div class="contact-layout">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Connect With Us</h2>
+                <p>Our team is here to help with any questions about orders, products, or our sustainability mission.
+                </p>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Visit Us</h3>
+                        <p>123 Sustainable Way<br>Eco District, San Francisco, CA 94105<br>United States</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+15551234567">+1 (555) 123-4567</a><br>Mon-Fri, 9am-6pm PST</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:hello@verdantmuse.com">hello@verdantmuse.com</a><br>For general inquiries</p>
+                        <p><a href="mailto:support@verdantmuse.com">support@verdantmuse.com</a><br>For order support</p>
+                    </div>
+                </div>
+
+                <div class="business-hours">
+                    <h3>Business Hours</h3>
+                    <div class="hour-row">
+                        <span class="day">Monday - Friday</span>
+                        <span>9:00 AM - 6:00 PM PST</span>
+                    </div>
+                    <div class="hour-row">
+                        <span class="day">Saturday</span>
+                        <span>10:00 AM - 4:00 PM PST</span>
+                    </div>
+                    <div class="hour-row">
+                        <span class="day">Sunday</span>
+                        <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2>Send a Message</h2>
+                <p class="form-subtitle">We'll get back to you within 24-48 hours.</p>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject <span class="required">*</span></label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="product">Product Information</option>
+                            <option value="returns">Returns & Exchanges</option>
+                            <option value="sustainability">Sustainability Question</option>
+                            <option value="wholesale">Wholesale Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderNumber">Order Number (Optional)</label>
+                        <input type="text" id="orderNumber" name="orderNumber"
+                            placeholder="If you have an order, please provide the number">
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+
+                    <div id="formStatus" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAP SECTION ================= -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509898!2d-122.4194184846815!3d37.77492977975968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0x14b2b9c2f9e5b8a7!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FAQ SECTION ================= -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 style="font-size: 2rem; color: var(--secondary);">Frequently Asked Questions</h2>
+                <p style="color: var(--gray-mid);">Quick answers to common questions</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3><i class="fas fa-truck" style="color: var(--accent); margin-right: 0.5rem;"></i> How long does
+                        shipping take?</h3>
+                    <p>Standard shipping takes 3-7 business days within the US. Express shipping (2-3 business days) is
+                        available at checkout. International shipping times vary by location.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-undo-alt" style="color: var(--accent); margin-right: 0.5rem;"></i> What's your
+                        return policy?</h3>
+                    <p>We offer free returns within 30 days of purchase. Items must be unworn, unwashed, with original
+                        tags attached. Email support@verdantmuse.com to initiate a return.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-leaf" style="color: var(--accent); margin-right: 0.5rem;"></i> Are your
+                        products truly sustainable?</h3>
+                    <p>Yes! We use 100% recycled or organic materials, carbon-neutral shipping, and partner with ethical
+                        factories. We're B Corp certified and donate 1% to environmental causes.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-tshirt" style="color: var(--accent); margin-right: 0.5rem;"></i> How do I find
+                        my size?</h3>
+                    <p>Check our detailed size guide on each product page. If you're between sizes, we recommend sizing
+                        up for a relaxed fit. Contact us for personalized sizing help!</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-globe" style="color: var(--accent); margin-right: 0.5rem;"></i> Do you ship
+                        internationally?</h3>
+                    <p>Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary by location.
+                        Customs fees may apply for international orders.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-gift" style="color: var(--accent); margin-right: 0.5rem;"></i> Can I modify or
+                        cancel my order?</h3>
+                    <p>Orders can be modified or cancelled within 1 hour of placement. Contact us immediately with your
+                        order number and we'll help you out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SOCIAL CONNECT SECTION ================= -->
+    <section class="social-connect">
+        <div class="container">
+            <h2>Follow Our Journey</h2>
+            <p>Join our community of conscious athletes and stay updated on new collections, sustainability news, and
+                exclusive offers.</p>
+            <div class="social-icons-large">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NEWSLETTER SECTION ================= -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2>Join the Verdant Circle</h2>
+            <p>Sign up for 10% off your first order and exclusive eco-tips.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p id="newsletterMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>VERDANT MUSE</h3>
+                <p>Ethically crafted activewear for the conscious athlete. Designed in California, made with purpose.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">Women's</a></li>
+                    <li><a href="#">Men's</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Verdant Muse. All rights reserved. | Made with ♡ for the planet.</p>
+        </div>
+    </footer>
+
+    <script src="contact.js">
+        // ============================================
+        // VERDANT MUSE | Contact Page JavaScript
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ========== MOBILE MENU ==========
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileNav.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        if (mobileNav.classList.contains('active')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // ========== LOAD CART COUNT ==========
+            function updateCartCount() {
+                try {
+                    const cart = JSON.parse(localStorage.getItem('verdantMuseCart') || '[]');
+                    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+                    const cartCountElements = document.querySelectorAll('.cart-count');
+                    cartCountElements.forEach(el => {
+                        if (el) el.textContent = totalItems;
+                    });
+                } catch (e) {
+                    console.log('Cart not available');
+                }
+            }
+
+            updateCartCount();
+
+            // Listen for cart updates
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'verdantMuseCart') {
+                    updateCartCount();
+                }
+            });
+
+            // ========== CONTACT FORM HANDLING ==========
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form values
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value.trim();
+                    const orderNumber = document.getElementById('orderNumber').value.trim();
+
+                    // Validation
+                    if (!name) {
+                        showFormMessage('Please enter your full name', 'error');
+                        return;
+                    }
+
+                    if (!email) {
+                        showFormMessage('Please enter your email address', 'error');
+                        return;
+                    }
+
+                    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showFormMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    if (!subject) {
+                        showFormMessage('Please select a subject', 'error');
+                        return;
+                    }
+
+                    if (!message) {
+                        showFormMessage('Please enter your message', 'error');
+                        return;
+                    }
+
+                    // Disable button and show loading
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                    // Simulate form submission (in real implementation, this would send to a backend)
+                    setTimeout(function () {
+                        // Store message in localStorage for demo
+                        const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                        messages.push({
+                            id: Date.now(),
+                            name: name,
+                            email: email,
+                            subject: subject,
+                            message: message,
+                            orderNumber: orderNumber,
+                            date: new Date().toISOString()
+                        });
+                        localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+                        // Show success message
+                        showFormMessage('Thank you for reaching out! We\'ll get back to you within 24-48 hours.', 'success');
+
+                        // Reset form
+                        contactForm.reset();
+
+                        // Re-enable button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+
+                        // Clear form status after 5 seconds
+                        setTimeout(function () {
+                            if (formStatus) {
+                                formStatus.style.display = 'none';
+                            }
+                        }, 5000);
+                    }, 1500);
+                });
+            }
+
+            function showFormMessage(message, type) {
+                if (formStatus) {
+                    formStatus.textContent = message;
+                    formStatus.className = 'form-message ' + type;
+                    formStatus.style.display = 'block';
+
+                    // Scroll to message
+                    formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Auto hide after 5 seconds
+                    setTimeout(function () {
+                        if (formStatus) {
+                            formStatus.style.display = 'none';
+                        }
+                    }, 5000);
+                }
+            }
+
+            // ========== NEWSLETTER FORM ==========
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterMessage = document.getElementById('newsletterMessage');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+
+                    if (!email) {
+                        showNewsletterMessage('Please enter your email address', 'error');
+                    } else if (!emailRegex.test(email)) {
+                        showNewsletterMessage('Please enter a valid email address', 'error');
+                    } else {
+                        // Store newsletter subscription
+                        const subscribers = JSON.parse(localStorage.getItem('verdantMuseNewsletter') || '[]');
+                        if (!subscribers.includes(email)) {
+                            subscribers.push(email);
+                            localStorage.setItem('verdantMuseNewsletter', JSON.stringify(subscribers));
+                        }
+
+                        showNewsletterMessage('Thanks for subscribing! 10% off code sent to ' + email, 'success');
+                        if (emailInput) emailInput.value = '';
+                        localStorage.setItem('verdantMuseSubscriber', email);
+                    }
+                });
+            }
+
+            function showNewsletterMessage(message, type) {
+                if (newsletterMessage) {
+                    newsletterMessage.textContent = message;
+                    newsletterMessage.style.color = type === 'success' ? '#E3A018' : '#ff6b6b';
+                    setTimeout(() => {
+                        if (newsletterMessage) newsletterMessage.textContent = '';
+                    }, 4000);
+                }
+            }
+
+            // ========== FORM INPUT ANIMATIONS ==========
+            const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.classList.add('focused');
+                });
+
+                input.addEventListener('blur', function () {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+
+                // Check if input has value on load
+                if (input.value) {
+                    input.parentElement.classList.add('focused');
+                }
+            });
+
+            // ========== SMOOTH SCROLLING ==========
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && href !== '' && href !== '#') {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // ========== STICKY HEADER EFFECT ==========
+            const header = document.querySelector('.site-header');
+            if (header) {
+                window.addEventListener('scroll', function () {
+                    if (window.scrollY > 100) {
+                        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                    } else {
+                        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                    }
+                });
+            }
+
+            // ========== ANIMATE FAQ ITEMS ON SCROLL ==========
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        entry.target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            faqItems.forEach(item => {
+                if (item) {
+                    item.style.opacity = '0';
+                    observer.observe(item);
+                }
+            });
+
+            // ========== CONSOLE BRANDING ==========
+            console.log('%c📞 VERDANT MUSE | Contact Us', 'color: #3A5E4C; font-size: 16px; font-weight: bold;');
+            console.log('%cWe\'d love to hear from you!', 'color: #E3A018; font-size: 12px;');
+        });
+    </script>
+</body>
+
+</html>

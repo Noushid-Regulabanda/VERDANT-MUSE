@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sustainability | Verdant Muse - Sustainable Activewear</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233A5E4C'/%3E%3Cpath fill='%23E3A018' d='M50 25 L58 40 L75 42 L63 54 L67 71 L50 62 L33 71 L37 54 L25 42 L42 40 Z'/%3E%3C/svg%3E">
+    <style>
+        /* Sustainability Page Specific Styles */
+        .sustainability-hero {
+            background: linear-gradient(135deg, #1e3529 0%, var(--secondary) 100%);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sustainability-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=600&fit=crop') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .sustainability-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .sustainability-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .sustainability-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Scorecard Section */
+        .scorecard-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .scorecard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .scorecard-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary-bg);
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .scorecard-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .scorecard-score {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .scorecard-label {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            margin: 0.5rem 0;
+        }
+
+        .scorecard-desc {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Materials Section */
+        .materials-section {
+            padding: 4rem 0;
+            background: var(--primary-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray-mid);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .material-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .material-icon {
+            background: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .material-icon i {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        .material-content {
+            padding: 1.5rem;
+        }
+
+        .material-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .material-percent {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .material-content p {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* Carbon Footprint Section */
+        .carbon-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .carbon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .carbon-content h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .carbon-stats {
+            margin-top: 2rem;
+        }
+
+        .carbon-stat {
+            margin-bottom: 1.5rem;
+        }
+
+        .carbon-stat-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .carbon-bar {
+            height: 12px;
+            background: var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .carbon-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .carbon-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 4rem 0;
+            background: var(--primary-bg);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .cert-card p {
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+        }
+
+        /* Circular Economy Section */
+        .circular-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3529 100%);
+            color: white;
+        }
+
+        .circular-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .circular-step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--text-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .circular-step h3 {
+            margin-bottom: 1rem;
+        }
+
+        .circular-step p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Impact Timeline */
+        .timeline-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--primary-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        /* Pledge Section */
+        .pledge-section {
+            padding: 4rem 0;
+            background: var(--accent);
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .pledge-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pledge-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-pledge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-pledge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: #2a4a3a;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .scorecard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .carbon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .circular-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                margin-left: 40px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sustainability-hero h1 {
+                font-size: 2rem;
+            }
+
+            .scorecard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">VERDANT MUSE</a>
+                <span class="logo-tag">sustainable activewear</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="sustainability.html" class="active">Sustainability</a></li>
+                    <li><a href="/shopifyWebsite/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" aria-label="Account"><i class="fas fa-user"></i></a>
+                <a href="cart.html" class="cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sustainability.html">Sustainability</a></li>
+                <li><a href="/shopifyWebsite/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= SUSTAINABILITY HERO ================= -->
+    <section class="sustainability-hero">
+        <div class="container">
+            <h1>Our Sustainability Journey</h1>
+            <p>We believe that fashion should protect the planet, not harm it. Every decision we make is guided by our
+                commitment to environmental stewardship.</p>
+        </div>
+    </section>
+
+    <!-- ================= SCORECARD SECTION ================= -->
+    <section class="scorecard-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Sustainability Scorecard</h2>
+                <p>Transparency is key to accountability. Here's how we're performing across key metrics.</p>
+            </div>
+            <div class="scorecard-grid">
+                <div class="scorecard-item">
+                    <div class="scorecard-score">100%</div>
+                    <div class="scorecard-label">Recycled Materials</div>
+                    <div class="scorecard-desc">In all core products</div>
+                </div>
+                <div class="scorecard-item">
+                    <div class="scorecard-score">-70%</div>
+                    <div class="scorecard-label">Water Usage</div>
+                    <div class="scorecard-desc">Vs. conventional methods</div>
+                </div>
+                <div class="scorecard-item">
+                    <div class="scorecard-score">-45%</div>
+                    <div class="scorecard-label">Carbon Footprint</div>
+                    <div class="scorecard-desc">Since 2022</div>
+                </div>
+                <div class="scorecard-item">
+                    <div class="scorecard-score">100%</div>
+                    <div class="scorecard-label">Renewable Energy</div>
+                    <div class="scorecard-desc">In manufacturing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MATERIALS SECTION ================= -->
+    <section class="materials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Materials Matter</h2>
+                <p>We carefully select every material to minimize environmental impact without compromising performance.
+                </p>
+            </div>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Recycled Polyester</h3>
+                        <div class="material-percent">Made from 100% post-consumer plastic bottles</div>
+                        <p>Each pair of Muse Leggings diverts 12 plastic bottles from oceans and landfills. Recycled
+                            polyester uses 59% less energy and produces 32% less CO2 than virgin polyester.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Organic Cotton</h3>
+                        <div class="material-percent">GOTS Certified Organic</div>
+                        <p>Grown without pesticides or synthetic fertilizers, organic cotton uses 91% less water than
+                            conventional cotton and supports healthier soil and farming communities.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>TENCEL™ Lyocell</h3>
+                        <div class="material-percent">From sustainably managed forests</div>
+                        <p>Made from wood pulp using a closed-loop process that recycles 99% of water and solvents.
+                            Biodegradable and exceptionally soft.</p>
+                    </div>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Eco-Dye Technology</h3>
+                        <div class="material-percent">Waterless dyeing process</div>
+                        <p>Our partnership with DyeCoo enables waterless dyeing using recycled CO2. No wastewater, no
+                            chemicals, zero pollution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CARBON FOOTPRINT SECTION ================= -->
+    <section class="carbon-section">
+        <div class="container">
+            <div class="carbon-grid">
+                <div class="carbon-content">
+                    <h2>Our Carbon Footprint</h2>
+                    <p>We're committed to becoming carbon negative by 2030. Here's our progress so far.</p>
+                    <div class="carbon-stats">
+                        <div class="carbon-stat">
+                            <div class="carbon-stat-label">
+                                <span>Emissions Reduction (Target: 50% by 2025)</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="carbon-bar">
+                                <div class="carbon-bar-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="carbon-stat">
+                            <div class="carbon-stat-label">
+                                <span>Renewable Energy Usage</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="carbon-bar">
+                                <div class="carbon-bar-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="carbon-stat">
+                            <div class="carbon-stat-label">
+                                <span>Offset Projects Funded</span>
+                                <span>12</span>
+                            </div>
+                            <div class="carbon-bar">
+                                <div class="carbon-bar-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carbon-image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop"
+                        alt="Forest restoration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CERTIFICATIONS SECTION ================= -->
+    <section class="certifications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Certifications & Partnerships</h2>
+                <p>Third-party verification ensures our claims are backed by rigorous standards.</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>B Corp Certified</h3>
+                    <p>Meeting the highest standards of social and environmental performance</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>1% for the Planet</h3>
+                    <p>Committed to donating 1% of sales to environmental causes</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>GOTS Certified</h3>
+                    <p>Global Organic Textile Standard for organic materials</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Bluesign® Approved</h3>
+                    <p>Safe manufacturing processes and materials</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>GRS Certified</h3>
+                    <p>Global Recycled Standard for recycled content</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Fair Trade Certified</h3>
+                    <p>Ethical working conditions and fair wages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CIRCULAR ECONOMY SECTION ================= -->
+    <section class="circular-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Towards a Circular Economy</h2>
+                <p style="color: rgba(255,255,255,0.9);">We're designing waste out of the system.</p>
+            </div>
+            <div class="circular-grid">
+                <div class="circular-step">
+                    <div class="step-number">1</div>
+                    <h3>Design for Longevity</h3>
+                    <p>Durable construction, timeless styles, and repairable designs that last for years, not seasons.
+                    </p>
+                </div>
+                <div class="circular-step">
+                    <div class="step-number">2</div>
+                    <h3>Take-Back Program</h3>
+                    <p>Return worn garments for recycling. We'll give you store credit and ensure materials are
+                        repurposed.</p>
+                </div>
+                <div class="circular-step">
+                    <div class="step-number">3</div>
+                    <h3>Closed-Loop Recycling</h3>
+                    <p>Old garments become new fibers, creating a true circular system with zero waste to landfill.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= IMPACT TIMELINE ================= -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Journey & Milestones</h2>
+                <p>Every step forward brings us closer to a sustainable future.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h4>Company Founded</h4>
+                        <p>Verdant Muse launched with a mission to create sustainable activewear that doesn't compromise
+                            on performance.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h4>First Recycled Collection</h4>
+                        <p>Launched our first 100% recycled polyester collection, diverting 10,000 plastic bottles from
+                            oceans.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h4>Carbon Neutral Certified</h4>
+                        <p>Achieved carbon neutrality across all operations through offsetting and renewable energy
+                            transition.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h4>B Corp Certification</h4>
+                        <p>Earned B Corp certification, joining a global community of businesses meeting high social and
+                            environmental standards.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h4>Take-Back Program Launch</h4>
+                        <p>Introduced our circular economy program, allowing customers to return worn garments for
+                            recycling.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h4>2030 Goals Set</h4>
+                        <p>Committed to becoming carbon negative and achieving zero waste to landfill by 2030.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PLEDGE SECTION ================= -->
+    <section class="pledge-section">
+        <div class="container">
+            <h2>Join the Sustainability Pledge</h2>
+            <p>Take the pledge to choose sustainable fashion. Together, we can make a difference.</p>
+            <a href="#" class="btn-pledge" id="pledgeBtn">Take the Pledge <i class="fas fa-hand-peace"></i></a>
+            <div id="pledgeMessage" style="margin-top: 1rem; font-weight: 500;"></div>
+        </div>
+    </section>
+
+    <!-- ================= NEWSLETTER SECTION ================= -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2>Join the Verdant Circle</h2>
+            <p>Sign up for 10% off your first order and exclusive eco-tips.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p id="newsletterMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>VERDANT MUSE</h3>
+                <p>Ethically crafted activewear for the conscious athlete. Designed in California, made with purpose.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">Women's</a></li>
+                    <li><a href="#">Men's</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Verdant Muse. All rights reserved. | Made with ♡ for the planet.</p>
+        </div>
+    </footer>
+
+    <script src="sustainability.js">
+        // ============================================
+        // VERDANT MUSE | Sustainability Page JavaScript
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ========== MOBILE MENU ==========
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileNav.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (mobileNav.classList.contains('active')) {
+                        if (icon) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        }
+                    } else {
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    });
+                });
+            }
+
+            // ========== LOAD CART COUNT ==========
+            function updateCartCount() {
+                try {
+                    const cart = JSON.parse(localStorage.getItem('verdantMuseCart') || '[]');
+                    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+                    const cartCountElements = document.querySelectorAll('.cart-count');
+                    cartCountElements.forEach(el => {
+                        if (el) el.textContent = totalItems;
+                    });
+                } catch (e) {
+                    console.log('Cart not available');
+                }
+            }
+
+            updateCartCount();
+
+            // Listen for cart updates from other pages
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'verdantMuseCart') {
+                    updateCartCount();
+                }
+            });
+
+            // ========== NEWSLETTER FORM ==========
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterMessage = document.getElementById('newsletterMessage');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+
+                    if (!email) {
+                        showNewsletterMessage('Please enter your email address', 'error');
+                    } else if (!emailRegex.test(email)) {
+                        showNewsletterMessage('Please enter a valid email address', 'error');
+                    } else {
+                        showNewsletterMessage('Thanks for subscribing! 10% off code sent to ' + email, 'success');
+                        if (emailInput) emailInput.value = '';
+                        localStorage.setItem('verdantMuseSubscriber', email);
+                    }
+                });
+            }
+
+            function showNewsletterMessage(message, type) {
+                if (newsletterMessage) {
+                    newsletterMessage.textContent = message;
+                    newsletterMessage.style.color = type === 'success' ? '#E3A018' : '#ff6b6b';
+                    setTimeout(() => {
+                        if (newsletterMessage) newsletterMessage.textContent = '';
+                    }, 4000);
+                }
+            }
+
+            // ========== PLEDGE BUTTON ==========
+            const pledgeBtn = document.getElementById('pledgeBtn');
+            const pledgeMessage = document.getElementById('pledgeMessage');
+
+            if (pledgeBtn) {
+                // Check if user already pledged
+                if (localStorage.getItem('verdantMusePledge')) {
+                    pledgeBtn.textContent = 'You\'re a Sustainability Champion!';
+                    pledgeBtn.style.background = '#1e3529';
+                    pledgeBtn.style.cursor = 'default';
+                }
+
+                pledgeBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const hasPledged = localStorage.getItem('verdantMusePledge');
+
+                    if (!hasPledged) {
+                        localStorage.setItem('verdantMusePledge', 'true');
+                        if (pledgeMessage) {
+                            pledgeMessage.innerHTML = '🎉 Thank you for taking the pledge! Together we can create a sustainable future.';
+                            pledgeMessage.style.color = '#E3A018';
+                        }
+                        pledgeBtn.textContent = 'You\'re a Sustainability Champion!';
+                        pledgeBtn.style.background = '#1e3529';
+                        pledgeBtn.style.cursor = 'default';
+                    } else {
+                        if (pledgeMessage) {
+                            pledgeMessage.innerHTML = '🌱 You\'ve already taken the pledge! Thank you for being a Sustainability Champion.';
+                            pledgeMessage.style.color = '#E3A018';
+                        }
+                    }
+
+                    setTimeout(() => {
+                        if (pledgeMessage) pledgeMessage.innerHTML = '';
+                    }, 5000);
+                });
+            }
+
+            // ========== ANIMATE CARBON BARS ON SCROLL ==========
+            const carbonBars = document.querySelectorAll('.carbon-bar-fill');
+            let barsAnimated = false;
+
+            function animateCarbonBars() {
+                if (barsAnimated || carbonBars.length === 0) return;
+
+                carbonBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 200);
+                });
+                barsAnimated = true;
+            }
+
+            // ========== SCROLL ANIMATIONS ==========
+            const animateElements = document.querySelectorAll('.material-card, .cert-card, .circular-step, .timeline-item, .scorecard-item, .sustainability-card');
+
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(30px)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(el => {
+                if (el) {
+                    el.style.opacity = '0';
+                    observer.observe(el);
+                }
+            });
+
+            // ========== OBSERVE CARBON SECTION FOR BARS ==========
+            const carbonSection = document.querySelector('.carbon-section');
+            if (carbonSection) {
+                const carbonObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCarbonBars();
+                            carbonObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                carbonObserver.observe(carbonSection);
+            }
+
+            // ========== COUNTUP ANIMATION FOR STATS ==========
+            const statNumbers = document.querySelectorAll('.scorecard-score, .impact-number');
+
+            function animateNumber(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    element.textContent = currentValue + (element.classList.contains('impact-number') ? '+' : (element.textContent.includes('%') ? '%' : ''));
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // Set up stat animations
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        let targetValue = element.getAttribute('data-target');
+
+                        if (!targetValue) {
+                            const text = element.textContent;
+                            targetValue = parseInt(text.replace(/[^0-9]/g, ''));
+                        }
+
+                        if (targetValue && !element.hasAttribute('data-animated')) {
+                            element.setAttribute('data-animated', 'true');
+                            const originalText = element.textContent;
+                            const hasPercent = originalText.includes('%');
+                            const hasPlus = originalText.includes('+');
+
+                            animateNumber(element, 0, targetValue, 2000);
+
+                            // Add back symbols after animation
+                            setTimeout(() => {
+                                if (hasPercent && !element.textContent.includes('%')) {
+                                    element.textContent = element.textContent + '%';
+                                }
+                                if (hasPlus && !element.textContent.includes('+')) {
+                                    element.textContent = element.textContent + '+';
+                                }
+                            }, 2000);
+                        }
+                        statsObserver.unobserve(element);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observe all stat numbers
+            statNumbers.forEach(stat => {
+                if (stat) statsObserver.observe(stat);
+            });
+
+            // Set data-target attributes for scorecard items
+            const scorecardItems = document.querySelectorAll('.scorecard-score');
+            const scorecardValues = ['100', '70', '45', '100'];
+            scorecardItems.forEach((item, index) => {
+                if (item && scorecardValues[index]) {
+                    item.setAttribute('data-target', scorecardValues[index]);
+                }
+            });
+
+            // ========== SMOOTH SCROLLING ==========
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && href !== '' && href !== '#') {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // ========== STICKY HEADER EFFECT ==========
+            const header = document.querySelector('.site-header');
+            if (header) {
+                window.addEventListener('scroll', function () {
+                    if (window.scrollY > 100) {
+                        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                    } else {
+                        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                    }
+                });
+            }
+
+            // ========== FIX CARBON BAR WIDTHS ==========
+            function initCarbonBars() {
+                const bars = document.querySelectorAll('.carbon-bar-fill');
+                bars.forEach(bar => {
+                    const width = bar.getAttribute('data-width') || bar.style.width;
+                    if (width && !bar.style.width) {
+                        bar.style.width = width;
+                    }
+                });
+            }
+            initCarbonBars();
+
+            // ========== CONSOLE BRANDING ==========
+            console.log('%c🌿 VERDANT MUSE | Sustainability', 'color: #3A5E4C; font-size: 16px; font-weight: bold;');
+            console.log('%cCommitted to protecting our planet through sustainable practices.', 'color: #E3A018; font-size: 12px;');
+
+            // ========== ADD MISSING STYLES ==========
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+        .carbon-bar-fill {
+            transition: width 1s ease-out;
+        }
+        .btn-pledge {
+            transition: all 0.3s ease;
+        }
+        .btn-pledge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .cert-card, .material-card, .circular-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .cert-card:hover, .material-card:hover, .circular-step:hover {
+            transform: translateY(-5px);
+        }
+    `;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+</body>
+
+</html>

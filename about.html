@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>About Us | Verdant Muse - Sustainable Activewear</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233A5E4C'/%3E%3Cpath fill='%23E3A018' d='M50 25 L58 40 L75 42 L63 54 L67 71 L50 62 L33 71 L37 54 L25 42 L42 40 Z'/%3E%3C/svg%3E">
+    <style>
+        /* About Page Specific Styles */
+        .about-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2a4a3a 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 4rem 0;
+            background: white;
+            margin-bottom: 2rem;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .mission-content h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .mission-content h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin-top: 10px;
+        }
+
+        .mission-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-bg);
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+            margin-top: 0.3rem;
+        }
+
+        .mission-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 4rem 0;
+            background: var(--primary-bg);
+        }
+
+        .section-title-centered {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .value-icon i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .value-card p {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Sustainability Section */
+        .sustainability-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e3529 100%);
+            color: white;
+        }
+
+        .sustainability-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .sustainability-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .sustainability-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .sustainability-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .sustainability-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .sustainability-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .sustainability-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .sustainability-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--primary-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+
+        .member-title {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .member-bio {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            margin-bottom: 1rem;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .member-social a {
+            color: var(--secondary);
+            transition: color 0.3s;
+        }
+
+        .member-social a:hover {
+            color: var(--accent);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 4rem 0;
+            background: var(--primary-bg);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .impact-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .impact-label {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            margin-top: 0.5rem;
+        }
+
+        .impact-description {
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+
+            .mission-grid,
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+
+            .mission-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">VERDANT MUSE</a>
+                <span class="logo-tag">sustainable activewear</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="/shopifyWebsite/sustainability.html">Sustainability</a></li>
+                    <li><a href="/shopifyWebsite/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="search-info" id="searchInfo">
+                    <p id="searchInfoText"></p>
+                </div>
+                <a href="/shopifyWebsite/account.html" aria-label="Account"><i class="fas fa-user"></i></a>
+                <a href="/shopifyWebsite/cart.html" class="cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= ABOUT HEADER ================= -->
+    <section class="about-header">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p>Born from a passion for movement and a commitment to protect the planet we love</p>
+        </div>
+    </section>
+
+    <!-- ================= MISSION SECTION ================= -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>At Verdant Muse, we believe that what you wear should never come at the expense of the planet.
+                        Our mission is to create high-performance activewear that empowers your movement while actively
+                        contributing to environmental restoration.</p>
+                    <p>We're redefining what it means to be a sustainable brand — not just using eco-friendly materials,
+                        but ensuring every step of our supply chain, from design to delivery, leaves a positive impact
+                        on the Earth and the communities we work with.</p>
+                    <div class="mission-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Recycled Materials</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1%</div>
+                            <div class="stat-label">For the Planet</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Carbon</div>
+                            <div class="stat-label">Neutral Shipping</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=500&fit=crop"
+                        alt="Yoga in nature">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= VALUES SECTION ================= -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title-centered">Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainability First</h3>
+                    <p>Every material, every process, every decision is made with the planet in mind. We use recycled
+                        polyester, organic cotton, and innovative eco-fabrics.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Ethical Production</h3>
+                    <p>Our partner factories uphold fair wages, safe working conditions, and respect for human rights.
+                        We believe in fashion that feels good in every way.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Performance Excellence</h3>
+                    <p>Sustainability shouldn't mean compromise. Our gear is engineered for durability, comfort, and
+                        peak performance in any activity.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Impact</h3>
+                    <p>We donate 1% of sales to environmental causes and partner with organizations working to restore
+                        our natural world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STORY SECTION ================= -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=500&fit=crop"
+                        alt="Founder in nature">
+                </div>
+                <div class="story-content">
+                    <h2>The Verdant Muse Story</h2>
+                    <p>It started with a simple realization: the clothes we wore to connect with nature were often
+                        harming it. Founder Maya Chen, an avid trail runner and environmental scientist, saw firsthand
+                        how the activewear industry contributed to plastic pollution and carbon emissions.</p>
+                    <p>In 2020, she left her corporate job to build something better. What began as a small Kickstarter
+                        campaign has grown into a community of conscious athletes who refuse to compromise between
+                        performance and sustainability.</p>
+                    <p>Today, Verdant Muse stands as a testament to what's possible when we design with intention. Every
+                        product tells a story of innovation, care, and a deep respect for the wild places that inspire
+                        us to move.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SUSTAINABILITY SECTION ================= -->
+    <section class="sustainability-section">
+        <div class="container">
+            <div class="sustainability-header">
+                <h2>Our Commitment to Sustainability</h2>
+                <p>We're on a journey to become a fully circular brand. Here's how we're making a difference.</p>
+            </div>
+            <div class="sustainability-grid">
+                <div class="sustainability-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Recycled Materials</h3>
+                    <p>Our signature fabric is made from 100% post-consumer plastic bottles, diverting waste from oceans
+                        and landfills.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Water Conservation</h3>
+                    <p>Our dyeing process uses 70% less water than conventional methods, and all water is treated before
+                        release.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Zero-Waste Packaging</h3>
+                    <p>All packaging is compostable, recycled, or reusable. We've eliminated virgin plastic from our
+                        supply chain.</p>
+                </div>
+                <div class="sustainability-card">
+                    <i class="fas fa-tree"></i>
+                    <h3>Carbon Offsetting</h3>
+                    <p>We partner with reforestation projects to offset 100% of our carbon emissions, planting a tree
+                        for every order.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TEAM SECTION ================= -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title-centered">Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maya Chen">
+                    </div>
+                    <h3>Maya Chen</h3>
+                    <div class="member-title">Founder & CEO</div>
+                    <p class="member-bio">Former environmental scientist turned sustainable fashion advocate. Trail
+                        runner, yogi, and nature lover.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Park">
+                    </div>
+                    <h3>David Park</h3>
+                    <div class="member-title">Head of Design</div>
+                    <p class="member-bio">20+ years in activewear design, passionate about creating functional pieces
+                        that minimize environmental impact.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <div class="member-title">Sustainability Lead</div>
+                    <p class="member-bio">Certified B Corp consultant ensuring every aspect of our supply chain meets
+                        the highest ethical standards.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Marcus Taylor">
+                    </div>
+                    <h3>Marcus Taylor</h3>
+                    <div class="member-title">Community Manager</div>
+                    <p class="member-bio">Ultra-marathoner building our community of conscious athletes and organizing
+                        eco-friendly events.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= IMPACT SECTION ================= -->
+    <section class="impact-section">
+        <div class="container">
+            <h2 class="section-title-centered">Our Impact So Far</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number">250,000+</div>
+                    <div class="impact-label">Plastic Bottles Diverted</div>
+                    <div class="impact-description">From oceans and landfills</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">15,000+</div>
+                    <div class="impact-label">Trees Planted</div>
+                    <div class="impact-description">Through reforestation partners</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">70%</div>
+                    <div class="impact-label">Less Water Used</div>
+                    <div class="impact-description">Compared to conventional manufacturing</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">100%</div>
+                    <div class="impact-label">Carbon Neutral</div>
+                    <div class="impact-description">Since 2022</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join the Movement</h2>
+            <p>Be part of a community that believes in better. Every purchase supports environmental restoration.</p>
+            <a href="shop.html" class="btn-cta">Shop Sustainably <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ================= NEWSLETTER SECTION ================= -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2>Join the Verdant Circle</h2>
+            <p>Sign up for 10% off your first order and exclusive eco-tips.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p id="newsletterMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>VERDANT MUSE</h3>
+                <p>Ethically crafted activewear for the conscious athlete. Designed in California, made with purpose.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="#">Women's</a></li>
+                    <li><a href="#">Men's</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Sustainability Report</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Verdant Muse. All rights reserved. | Made with ♡ for the planet.</p>
+        </div>
+    </footer>
+
+    <script src="about.js">
+        // ============================================
+        // VERDANT MUSE | About Page JavaScript
+        // ============================================
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ========== MOBILE MENU ==========
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function () {
+                    mobileNav.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (mobileNav.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileNav.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+
+            // ========== LOAD CART COUNT ==========
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('verdantMuseCart') || '[]');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const cartCountElements = document.querySelectorAll('.cart-count');
+                cartCountElements.forEach(el => {
+                    if (el) el.textContent = totalItems;
+                });
+            }
+
+            updateCartCount();
+
+            // ========== NEWSLETTER FORM ==========
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterMessage = document.getElementById('newsletterMessage');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput.value.trim();
+                    const emailRegex = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+
+                    if (!email) {
+                        showMessage('Please enter your email address', 'error');
+                    } else if (!emailRegex.test(email)) {
+                        showMessage('Please enter a valid email address', 'error');
+                    } else {
+                        showMessage(`Thanks for subscribing! 10% off code sent to ${email}`, 'success');
+                        emailInput.value = '';
+                        localStorage.setItem('verdantMuseSubscriber', email);
+                    }
+                });
+            }
+
+            function showMessage(message, type) {
+                if (newsletterMessage) {
+                    newsletterMessage.textContent = message;
+                    newsletterMessage.style.color = type === 'success' ? '#E3A018' : '#ff6b6b';
+                    setTimeout(() => {
+                        newsletterMessage.textContent = '';
+                    }, 4000);
+                }
+            }
+
+            // ========== ANIMATE ON SCROLL ==========
+            const animateElements = document.querySelectorAll('.value-card, .sustainability-card, .team-member, .impact-item');
+
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(30px)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+
+            // ========== COUNTUP ANIMATION FOR STATS ==========
+            const statNumbers = document.querySelectorAll('.stat-number, .impact-number');
+
+            function animateNumber(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    element.textContent = currentValue.toLocaleString() + (element.classList.contains('impact-number') ? '+' : '');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const impactObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const targetValue = parseInt(element.getAttribute('data-target') || element.textContent.replace(/[^0-9]/g, ''));
+                        if (targetValue && !element.hasAttribute('data-animated')) {
+                            element.setAttribute('data-animated', 'true');
+                            animateNumber(element, 0, targetValue, 2000);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Set data-target attributes for stats
+            const impactItems = document.querySelectorAll('.impact-number');
+            const impactValues = ['250000', '15000', '70', '100'];
+            impactItems.forEach((item, index) => {
+                const value = impactValues[index];
+                item.setAttribute('data-target', value);
+                item.textContent = '0+';
+                impactObserver.observe(item);
+            });
+
+            const missionStats = document.querySelectorAll('.stat-number');
+            const missionValues = ['100', '1'];
+            missionStats.forEach((item, index) => {
+                if (index < missionValues.length) {
+                    item.setAttribute('data-target', missionValues[index]);
+                    item.textContent = '0%';
+                    impactObserver.observe(item);
+                }
+            });
+
+            // ========== SMOOTH SCROLLING ==========
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '' && href !== '#') {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // ========== STICKY HEADER EFFECT ==========
+            const header = document.querySelector('.site-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                }
+            });
+
+            // ========== CONSOLE BRANDING ==========
+            console.log('%c🌿 VERDANT MUSE | About Us', 'color: #3A5E4C; font-size: 16px; font-weight: bold;');
+            console.log('%cSustainability meets performance — join the movement.', 'color: #E3A018; font-size: 12px;');
+        });
+    </script>
+</body>
+
+</html>
